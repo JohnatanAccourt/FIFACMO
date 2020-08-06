@@ -1,0 +1,3 @@
+[submodule "FIFAMall"]
+	path = FIFAMall
+	url = https://github.com/JohnatanAccourt/FIFAMall.git
