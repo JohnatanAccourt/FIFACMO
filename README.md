@@ -132,3 +132,52 @@ npm start
 
 Depois o expo vai abrir uma página web, é só seguir as instruções para executar no seu smarthphone ou emulador ios/Android.
 
+## Convenção simples para ajuda-lo a administrar:
+
+Essa parte é bem particular de cada grupo de jogadores, seja seu grupo que joga apenas on-line ou então presencialmente. Com isso existem diversas regras que é criada inevitavelmente ou então conscientemente conforme o tempo.
+Mesmo com o aplicativo, não é interferido a regra que seu grupo usa de forma corrente as regras a seguir é apenas um exemplo que pode vir a ser utilizado.
+
+Na liga pode ser definido os prêmios dessa forma **(lembrando que tudo descrito aqui pode ser alterado)**:
+- 1 lugar: 30 milhões
+- 2 lugar: 20 milhões
+- E a partir do terceiro lugar em diante é diminuído apenas 1 milhão.
+- 3 lugar: 10 milhões
+- 4 lugar: 9 milhões
+- 5 lugar: 8 milhões
+- 6 lugar: 7 milhões
+- 7 lugar: 6 milhões
+E por diante....
+
+Já copa é um pouco diferente: 
+O prêmio é para apenas quem chegar as quartas-de-final, no caso:
+- Participantes das quartas de final: 3 milhões;
+- Participantes das semifinais: +7 milhões;
+- Participantes da final: +10 milhões;
+- Vencedor: +15 milhões;
+
+**Copa dos campeões:** 
+
+Opção 1: Padrão ida e volta entre o campeão da liga com o campeão da copa:
+
+Opção 2: Consiste em uma série (como as finais da NBA) do campeão da liga com o campeão da copa:
+- São no máximo 5 jogos todos de 4 minutos;
+- O primeiro que ganhar 3 partidas é campeão.
+- O prêmio para o campeão: 10 milhões.
+- O prêmio para o vice-campeão: 5 milhões.
+
+
+Orçamento: 
+Cada clube começa com 100 milhões de verba para realizar no mínimo 25 contratações. E conforme a colocação nos campeonatos a verba vai ficando cada vez mais alta para fazer investimentos de jogadores do mercado interno e externo.
+
+**Se desejar mudar o valor padrão da verba, deve atualizar a tabela teams, campo budget no banco de dados.**
+
+Desafio:
+Um clube pode desafiar o outro apostando algum jogador ou então dinheiro de seu orçamento/verba
+
+Os times podem definir regras a partir de então:
+- É apenas ida a partida? ida e volta? 
+- O tempo da partida.
+- Deve haver algo que possa ser apostado que pode ser jogador ou então determinada quantidade de dinheiro da verba do clube.
+
+Amistoso: 
+Pode ser definido com as mesmas regras do desafio mas não há aposta é apenas um(ou dois) jogos amigáveis.
