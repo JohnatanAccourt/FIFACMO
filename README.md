@@ -1,4 +1,4 @@
-# FIFACMO:
+# FIFACMO: 
 
 ## Sumário:
 
@@ -130,7 +130,7 @@ npm start
 
 **O expo tem alguns problemas quando executamos o npm install então se estiver com alguma IDE aberta e/ou anti-vírus ligado desligue momentaneamente antes de fazer o npm install**
 
-Depois o expo vai abrir uma página web, é só seguir as instruções para executar no seu smarthphone ou emulador ios/Android.
+Depois o expo vai abrir uma página web, é só seguir as instruções para executar no seu smartphone ou emulador ios/Android.
 
 ## Convenção simples para ajuda-lo a administrar:
 
