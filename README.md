@@ -187,7 +187,7 @@ Pode ser definido com as mesmas regras do desafio mas não há aposta é apenas 
 
 
 
-![1](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/1.jpg)
+![1](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/1.jpg =250x)
 ![2](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/2.jpg)
 ![3](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/3.jpg)
 ![4](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/4.jpg)
