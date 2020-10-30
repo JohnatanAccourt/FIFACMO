@@ -13,7 +13,8 @@
     * Prancheta
 * Recursos necessários
 * Rodando o aplicativo
-* Convenção simples para ajuda-lo a administrar. 
+* Convenção simples para ajuda-lo a administrar.
+* Imagens do aplicativo 
 
 ## Introdução do FIFACMO:
 
@@ -181,3 +182,28 @@ Os times podem definir regras a partir de então:
 
 Amistoso: 
 Pode ser definido com as mesmas regras do desafio mas não há aposta é apenas um(ou dois) jogos amigáveis.
+
+## Convenção simples para ajuda-lo a administrar:
+
+
+
+![1](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/1.jpg)
+![2](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/2.jpg)
+![3](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/3.jpg)
+![4](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/4.jpg)
+![5](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/5.jpg)
+![6](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/6.jpg)
+![7](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/7.jpg)
+![8](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/8.jpg)
+![9](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/9.jpg)
+![95](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/9.5.jpg)
+![10](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/10.jpg)
+![11](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/11.jpg)
+![12](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/12.jpg)
+![13](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/13.jpg)
+![14](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/14.jpg)
+![14](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/15.jpg)
+![14](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/16.jpg)
+![14](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/17.jpg)
+![14](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/18.jpg)
+![14](https://raw.githubusercontent.com/JohnatanAccourt/FIFACMO/master/APP/assets/docs/18.5.jpg)
