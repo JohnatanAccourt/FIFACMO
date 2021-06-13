@@ -2,67 +2,145 @@ const players = require('../../models/players');
 const { Op } = require("sequelize");
 
 module.exports = {
+    // async index(req, res){
+    //     const page = req.query.page
+        
+    //     const count = await players.count({ raw : true })
+    //     res.header('X-Total-Count', count)
+
+    //     const playersSearch = await players.findAll(
+    //         {
+    //             raw : true,
+    //             limit: 5,
+    //             offset: ((page - 1) * 5),
+    //             subQuery: false,
+    //             order: [[ 'overall', 'DESC' ]],
+    //             where: { team_id: null },
+    //             attributes:[
+    //                 'sofifa_id',
+    //                 'short_name',
+    //                 'age',
+    //                 'height_cm',
+    //                 'weight_kg',
+    //                 'player_positions',
+    //                 'nationality',
+    //                 'overall',
+    //                 'value_eur',
+    //             ],
+    //         }
+    //     )
+
+    //     return res.json(playersSearch)
+    // },
+
     async index(req, res){
         const page = req.query.page
 
-        // const playersSearch = await players.findAll( //findAndCountAll
-        //     {
-        //         raw : true,
-        //         limit: 5,
-        //         offset: ((page - 1) * 5),
-        //         subQuery: false,
-        //         order: [[ 'overall','DESC' ]],
-        //         where: { team_id: null },
-        //         attributes:{
-        //             exclude:[
-        //                 'dob', 
-        //                 'potential', 
-        //                 'wage_eur', 
-        //                 'international_reputation', 
-        //                 'work_rate', 'body_type', 
-        //                 'release_clause_eur', 
-        //                 'team_position', 
-        //                 'team_jersey_number', 
-        //                 'loaned_from', 
-        //                 'joined',
-        //                 'contract_valid_until',
-        //                 'nation_position',
-        //                 'nation_jersey_number',
-        //                 'favorites_id',
-        //                 'cart_id'
-        //             ]
-        //         }
-        //     }
-        // )
+        const nationality = req.query.nationality
+        
+        const position = req.query.position
+        const skill = req.query.skill
+        const realface = req.query.realface
+        const weakfoot = req.query.weakfoot
+        
+        const minage = req.query.minage 
+        const maxage = req.query.maxage
+        
+        const minvalue = req.query.minvalue
+        const maxvalue = req.query.maxvalue
+    
+        const minOverall = req.query.minOverall
+        const maxOverall = req.query.maxOverall
 
-        // using this is much more slow although easy to front-end catch data
+        const minHeight = req.query.minHeight
+        const maxHeight = req.query.maxHeight
 
-        // const count = await players.findAndCountAll({
-        //     raw : true,
-        // })
-
-        // res.header('X-Total-Count', count.count)
-
-        const playersSearch = await players.findAll( //findAndCountAll
+        const playersSearch = await players.findAll(
             {
                 raw : true,
-                limit: 10,
+                limit: 5,
                 offset: ((page - 1) * 5),
                 subQuery: false,
                 order: [[ 'overall', 'DESC' ]],
-                where: { team_id: null, },
-                // nest : true,
+                where: { 
+                    team_id: null,
+                    [Op.and]:{
+                        nationality: nationality == '' ? { [Op.like]: '%'} : nationality,
+                        player_positions: {[Op.like]: `%${position}%`},
+                        skill_moves: skill == '' ? { [Op.like]: '%'} : skill,
+                        real_face: realface == '' ? { [Op.like]: '%'} : realface,
+                        weak_foot: weakfoot == '' ? { [Op.like]: '%'} : weakfoot,
+                        age:{
+                            [Op.between]: [minage == '' ? '16': minage, maxage == '' ? '47': maxage]
+                        },
+                        value_eur:{
+                            [Op.between]: [minvalue == '' ? '0': minvalue, maxvalue == '' ? '300000000': maxvalue]
+                        },
+                        overall:{
+                            [Op.between]: [minOverall == '' ? '46': minOverall, maxOverall == '' ? '98': maxOverall]
+                        },
+                        height_cm:{
+                            [Op.between]: [minHeight == '' ? '0': minvalue, maxHeight == '' ? '200': maxvalue]
+                        },
+                    } 
+                },
                 attributes:[
                     'sofifa_id',
                     'short_name',
                     'age',
+                    'height_cm',
                     'weight_kg',
+                    'player_positions',
                     'nationality',
                     'overall',
                     'value_eur',
                 ],
             }
         )
+
+        const count = await players.count(
+            {
+                raw : true,
+                limit: 5,
+                offset: ((page - 1) * 5),
+                subQuery: false,
+                order: [[ 'overall', 'DESC' ]],
+                where: { 
+                    team_id: null,
+                    [Op.and]:{
+                        nationality: nationality == '' ? { [Op.like]: '%'} : nationality,
+                        player_positions: {[Op.like]: `%${position}%`},
+                        skill_moves: skill == '' ? { [Op.like]: '%'} : skill,
+                        real_face: realface == '' ? { [Op.like]: '%'} : realface,
+                        weak_foot: weakfoot == '' ? { [Op.like]: '%'} : weakfoot,
+                        age:{
+                            [Op.between]: [minage == '' ? '16': minage, maxage == '' ? '47': maxage]
+                        },
+                        value_eur:{
+                            [Op.between]: [minvalue == '' ? '0': minvalue, maxvalue == '' ? '300000000': maxvalue]
+                        },
+                        overall:{
+                            [Op.between]: [minOverall == '' ? '46': minOverall, maxOverall == '' ? '98': maxOverall]
+                        },
+                        height_cm:{
+                            [Op.between]: [minHeight == '' ? '0': minvalue, maxHeight == '' ? '200': maxvalue]
+                        },
+                    } 
+                },
+                attributes:[
+                    'sofifa_id',
+                    'short_name',
+                    'age',
+                    'height_cm',
+                    'weight_kg',
+                    'player_positions',
+                    'nationality',
+                    'overall',
+                    'value_eur',
+                ],
+            }
+        )
+        res.header('X-Total-Count', count)
 
         return res.json(playersSearch)
     },

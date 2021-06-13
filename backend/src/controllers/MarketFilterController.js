@@ -4,6 +4,9 @@ const { Op } = require("sequelize");
 module.exports = {
     async index(req, res){
         const nationality = req.params.nationality
+        
+        const page = req.query.page
+        
         const position = req.query.position
         const skill = req.query.skill
         const realface = req.query.realface
@@ -17,11 +20,16 @@ module.exports = {
     
         const minOverall = req.query.minOverall
         const maxOverall = req.query.maxOverall
+
+        const minHeight = req.query.minHeight
+        const maxHeight = req.query.maxHeight
     
     
         const playersSearch = await players.findAll(
             {
                 raw : true,
+                limit: 5,
+                offset: ((page - 1) * 5),
                 order: [[ 'overall','DESC' ]],
                 where: {
                     team_id: null,
@@ -40,39 +48,26 @@ module.exports = {
                         overall:{
                             [Op.between]: [minOverall == '' ? '46': minOverall, maxOverall == '' ? '98': maxOverall]
                         },
+                        height_cm:{
+                            [Op.between]: [minHeight == '' ? '0': minvalue, maxHeight == '' ? '200': maxvalue]
+                        },
                     }
-                    
-                    // future implements:
-                    // height_cm:{
-                    //     [Op.between]: [minHeight, maxHeight]
-                    // },
-                    // weight_kg:{
-                    //     [Op.between]: [minWeight, maxWeight]
-                    // }, 
                 },
-                attributes:{
-                    exclude:[
-                        'dob', 
-                        'potential', 
-                        'wage_eur', 
-                        'international_reputation', 
-                        'work_rate', 'body_type', 
-                        'release_clause_eur', 
-                        'team_position', 
-                        'team_jersey_number', 
-                        'loaned_from', 
-                        'joined',
-                        'contract_valid_until',
-                        'nation_position',
-                        'nation_jersey_number',
-                        'favorites_id',
-                        'cart_id'
-                    ]
-                }
+                attributes:[
+                    'sofifa_id',
+                    'short_name',
+                    'age',
+                    'height_cm',
+                    'weight_kg',
+                    'player_positions',
+                    'nationality',
+                    'overall',
+                    'value_eur',
+                ]
             }
         )
 
-        const count = await players.findAndCountAll({
+        const count = await players.count({
             raw : true,
                 order: [[ 'overall','DESC' ]],
                 where: {
@@ -91,13 +86,12 @@ module.exports = {
                         },
                         overall:{
                             [Op.between]: [minOverall == '' ? '46': minOverall, maxOverall == '' ? '98': maxOverall]
-                        },
-
+                        }
                 }
             }
         })
 
-        res.header('X-Total-Count', count.count)
+        res.header('X-Total-Count', count)
         return res.json(playersSearch)
     },
 }

@@ -35,7 +35,7 @@ routes.get("/Sessions", SessionController.index)
 
 // App routes
 routes.get("/market", MarketController.index)
-routes.get("/market/:nationality", MarketFilterController.index)
+// routes.get("/market/:nationality", MarketFilterController.index)
 routes.get("/market/search/:nameplayer", MarketSearchController.index)
 
 routes.get("/favorites", FavoritesController.index)

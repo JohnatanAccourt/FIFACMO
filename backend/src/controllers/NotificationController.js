@@ -43,7 +43,6 @@ module.exports = {
         }else{
             budget.budget = result
             await teams.update({ budget: budget.budget }, { where: { team_id: team_id_sent } })
-
         }
         
         const createNotification = await notifications.create({
@@ -62,7 +61,6 @@ module.exports = {
         // after 12hrs it'll be erased 
         setTimeout(async () => {
             await notifications.destroy({ where:{ team_id_sent: team_id_sent, player_id: player_id} })
-
         }, 43200000)
 
         return res.json(createNotification)
