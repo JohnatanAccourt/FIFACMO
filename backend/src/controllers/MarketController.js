@@ -1,37 +1,8 @@
 const players = require('../../models/players');
 const { Op } = require("sequelize");
+const exclude = require('../../consts/exclude');
 
 module.exports = {
-    // async index(req, res){
-    //     const page = req.query.page
-        
-    //     const count = await players.count({ raw : true })
-    //     res.header('X-Total-Count', count)
-
-    //     const playersSearch = await players.findAll(
-    //         {
-    //             raw : true,
-    //             limit: 5,
-    //             offset: ((page - 1) * 5),
-    //             subQuery: false,
-    //             order: [[ 'overall', 'DESC' ]],
-    //             where: { team_id: null },
-    //             attributes:[
-    //                 'sofifa_id',
-    //                 'short_name',
-    //                 'age',
-    //                 'height_cm',
-    //                 'weight_kg',
-    //                 'player_positions',
-    //                 'nationality',
-    //                 'overall',
-    //                 'value_eur',
-    //             ],
-    //         }
-    //     )
-
-    //     return res.json(playersSearch)
-    // },
 
     async index(req, res){
         const page = req.query.page
@@ -59,7 +30,7 @@ module.exports = {
             {
                 raw : true,
                 limit: 5,
-                offset: ((page - 1) * 5),
+                offset: (page - 1) * 5,
                 subQuery: false,
                 order: [[ 'overall', 'DESC' ]],
                 where: { 
@@ -71,30 +42,20 @@ module.exports = {
                         real_face: realface == '' ? { [Op.like]: '%'} : realface,
                         weak_foot: weakfoot == '' ? { [Op.like]: '%'} : weakfoot,
                         age:{
-                            [Op.between]: [minage == '' ? '16': minage, maxage == '' ? '47': maxage]
+                            [Op.between]: [minage == undefined ? '16': minage, maxage == '' ? '47': maxage]
                         },
                         value_eur:{
-                            [Op.between]: [minvalue == '' ? '0': minvalue, maxvalue == '' ? '300000000': maxvalue]
+                            [Op.between]: [minvalue == undefined ? '0': minvalue, maxvalue == '' ? '300000000': maxvalue]
                         },
                         overall:{
-                            [Op.between]: [minOverall == '' ? '46': minOverall, maxOverall == '' ? '98': maxOverall]
+                            [Op.between]: [minOverall == undefined ? '46': minOverall, maxOverall == '' ? '98': maxOverall]
                         },
                         height_cm:{
-                            [Op.between]: [minHeight == '' ? '0': minvalue, maxHeight == '' ? '200': maxvalue]
+                            [Op.between]: [minHeight == undefined ? '0': minvalue, maxHeight == '' ? '200': maxvalue]
                         },
                     } 
                 },
-                attributes:[
-                    'sofifa_id',
-                    'short_name',
-                    'age',
-                    'height_cm',
-                    'weight_kg',
-                    'player_positions',
-                    'nationality',
-                    'overall',
-                    'value_eur',
-                ],
+                attributes:{ exclude }
             }
         )
 
@@ -127,17 +88,7 @@ module.exports = {
                         },
                     } 
                 },
-                attributes:[
-                    'sofifa_id',
-                    'short_name',
-                    'age',
-                    'height_cm',
-                    'weight_kg',
-                    'player_positions',
-                    'nationality',
-                    'overall',
-                    'value_eur',
-                ],
+                attributes:{ exclude },
             }
         )
         res.header('X-Total-Count', count)
